@@ -5,7 +5,7 @@
 
 <hibernate-configuration>
     <!-- a SessionFactory instance listed as /jndi/name -->
-    <session-factory name="java:hibernate/SessionFactory">
+    <session-factory>
         <!-- properties -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/study</property>
