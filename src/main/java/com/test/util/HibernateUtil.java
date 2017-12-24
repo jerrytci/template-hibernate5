@@ -1,9 +1,11 @@
 package com.test.util;
 
-import com.test.domain.ContractEmployee;
-import com.test.domain.Employee;
-import com.test.domain.Employee6;
-import com.test.domain.PermanentEmployee;
+import com.test.inheritance.*;
+import com.test.setMapList.EmployeeCollection;
+import com.test.association.*;
+import com.test.simple.Employee;
+import com.test.simple.Employee2;
+import com.test.simple.Employee3;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -17,10 +19,36 @@ public class HibernateUtil {
         if(sessionFactory==null){
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
             Metadata metadata = new MetadataSources(serviceRegistry)
+//                    po及简单属性映射
                     .addAnnotatedClass(Employee.class)
+//                    复合主键映射
+                    .addAnnotatedClass(Employee2.class)
+//                    复合主键映射方式2
+                    .addAnnotatedClass(Employee3.class)
+
+                    // collection
+                    .addAnnotatedClass(EmployeeCollection.class)
+
+                    // inheritance
                     .addAnnotatedClass(Employee6.class)
                     .addAnnotatedClass(PermanentEmployee.class)
                     .addAnnotatedClass(ContractEmployee.class)
+                    // 2
+                    .addAnnotatedClass(Employee7.class)
+                    .addAnnotatedClass(PermanentEmployee2.class)
+                    .addAnnotatedClass(ContractEmployee2.class)
+                    // 3 共同的属性保存在父类，子类的属性保存在子类中
+                    .addAnnotatedClass(Employee8.class)
+                    .addAnnotatedClass(PermanentEmployee3.class)
+                    .addAnnotatedClass(ContractEmployee3.class)
+
+                    // Relational Mapping
+                    // one to one
+                    .addAnnotatedClass(Employee10.class)
+                    .addAnnotatedClass(Address.class)
+                    // one to one (2)
+                    .addAnnotatedClass(Employee11.class)
+                    .addAnnotatedClass(Address2.class)
                     .buildMetadata();
             sessionFactory = metadata.getSessionFactoryBuilder().build();
         }

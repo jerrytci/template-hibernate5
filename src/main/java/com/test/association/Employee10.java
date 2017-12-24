@@ -1,24 +1,24 @@
-package com.test.domain;
+package com.test.association;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employee")
-public class Employee {
+public class Employee10 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "employee_name")
     private String name;
-    private int age;
 
-    public Employee() {
+    @OneToOne(mappedBy = "employee10", cascade = CascadeType.ALL)
+    private Address address;
+
+    public Employee10() {
+
     }
 
-    public Employee(Long id, String name, int age) {
-        this.id = id;
+    public Employee10(String name, Address address) {
         this.name = name;
-        this.age = age;
+        this.address = address;
     }
 
     public Long getId() {
@@ -37,11 +37,12 @@ public class Employee {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAddress(Address address) {
+        this.address = address;
     }
+
 }

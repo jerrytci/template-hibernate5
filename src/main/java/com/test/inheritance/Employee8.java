@@ -1,21 +1,20 @@
-package com.test.domain;
+package com.test.inheritance;
 
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "employee_type", discriminatorType = DiscriminatorType.STRING)
-public class Employee6 {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Employee8 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 
-    public Employee6() {
+    public Employee8() {
 
     }
 
-    public Employee6(Long id, String name) {
+    public Employee8(Long id, String name) {
         this.id = id;
         this.name = name;
     }

@@ -1,24 +1,21 @@
-package com.test.domain;
+package com.test.inheritance;
 
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "employee_type", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(("employee"))
-public class PermanentEmployee extends Employee6{
+public class PermanentEmployee2 extends Employee7 {
     private int salary;
     private int bonus;
 
-    public PermanentEmployee() {
+    public PermanentEmployee2() {
     }
 
-    public PermanentEmployee(int salary, int bonus) {
+    public PermanentEmployee2(int salary, int bonus) {
         this.salary = salary;
         this.bonus = bonus;
     }
 
-    public PermanentEmployee(Long id, String name, int salary, int bonus) {
+    public PermanentEmployee2(Long id, String name, int salary, int bonus) {
         super(id, name);
         this.salary = salary;
         this.bonus = bonus;

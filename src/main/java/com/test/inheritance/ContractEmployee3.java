@@ -1,23 +1,23 @@
-package com.test.domain;
+package com.test.inheritance;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@DiscriminatorValue("contract")
-public class ContractEmployee extends Employee6 {
+@PrimaryKeyJoinColumn(name = "id")
+public class ContractEmployee3 extends Employee8 {
     private int daily;
     private int period;
 
-    public ContractEmployee() {
+    public ContractEmployee3() {
     }
 
-    public ContractEmployee(int daily, int period) {
+    public ContractEmployee3(int daily, int period) {
         this.daily = daily;
         this.period = period;
     }
 
-    public ContractEmployee(Long id, String name, int daily, int period) {
+    public ContractEmployee3(Long id, String name, int daily, int period) {
         super(id, name);
         this.daily = daily;
         this.period = period;
