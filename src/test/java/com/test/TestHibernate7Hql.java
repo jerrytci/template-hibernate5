@@ -3,7 +3,6 @@ package com.test;
 import com.test.association.Employee12;
 import com.test.session.Student;
 import com.test.util.HibernateUtil;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -60,7 +59,7 @@ public class TestHibernate7Hql {
     @Test
     public void testPolymorphicQueries(){
         List<Employee12> employee12s = session.createQuery("from Employee12").list();
-        assertThat(employee12s.size(),is(3));
+        assertThat(employee12s.size(),is(2));
     }
 
     @Test

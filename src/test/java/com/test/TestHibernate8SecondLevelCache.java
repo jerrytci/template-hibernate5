@@ -44,7 +44,9 @@ public class TestHibernate8SecondLevelCache {
     public void testSecondLevelCache(){
         Person2 person2 = new Person2("person_name");
         session.setCacheMode(CacheMode.NORMAL);
+        // Statistics:统计
         Statistics statistics = sessionFactory.getStatistics();
+        statistics.setStatisticsEnabled(true);
 
         Long id = (Long) session.save(person2);
         transaction.commit();
@@ -52,9 +54,9 @@ public class TestHibernate8SecondLevelCache {
 
         Person2 person21 = session.get(Person2.class,id);
         assertThat(statistics.getSecondLevelCachePutCount(),is(1L));
+
         session.evict(person21);
         session.get(Person2.class,id);
-
         assertThat(statistics.getSecondLevelCacheHitCount(),is(1L));
     }
 }
