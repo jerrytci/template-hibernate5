@@ -1,6 +1,10 @@
 package com.test.util;
 
 import com.test.inheritance.*;
+import com.test.session.Person;
+import com.test.session.Person2;
+import com.test.session.Student;
+import com.test.session.SubEmployee12;
 import com.test.setMapList.EmployeeCollection;
 import com.test.association.*;
 import com.test.simple.Employee;
@@ -49,6 +53,19 @@ public class HibernateUtil {
                     // one to one (2)
                     .addAnnotatedClass(Employee11.class)
                     .addAnnotatedClass(Address2.class)
+                    // one to many
+                    .addAnnotatedClass(Employee12.class)
+                    .addAnnotatedClass(Address3.class)
+                    // many to many
+                    .addAnnotatedClass(Employee13.class)
+                    .addAnnotatedClass(Address4.class)
+                    // session
+                    .addAnnotatedClass(Person.class)
+                    // hql
+                    .addAnnotatedClass(Student.class)
+                    .addAnnotatedClass(SubEmployee12.class)
+
+                    .addAnnotatedClass(Person2.class)
                     .buildMetadata();
             sessionFactory = metadata.getSessionFactoryBuilder().build();
         }

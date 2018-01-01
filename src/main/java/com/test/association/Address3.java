@@ -3,18 +3,23 @@ package com.test.association;
 import javax.persistence.*;
 
 @Entity
-public class Address2 {
+public class Address3 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String steet;
     private String zipcode;
 
-    @OneToOne
-    @MapsId
-    private Employee11 employee11;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee12 employee;
 
-    public Address2() {
+    public Address3() {
+    }
+
+    public Address3(String steet, String zipcode) {
+        this.steet = steet;
+        this.zipcode = zipcode;
     }
 
     public String getSteet() {
@@ -33,11 +38,11 @@ public class Address2 {
         this.zipcode = zipcode;
     }
 
-    public Employee11 getEmployee11() {
-        return employee11;
+    public Employee12 getEmployee() {
+        return employee;
     }
 
-    public void setEmployee11(Employee11 employee11) {
-        this.employee11 = employee11;
+    public void setEmployee(Employee12 employee) {
+        this.employee = employee;
     }
 }

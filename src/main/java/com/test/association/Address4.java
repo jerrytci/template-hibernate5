@@ -1,20 +1,26 @@
 package com.test.association;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Address2 {
+public class Address4 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String steet;
     private String zipcode;
 
-    @OneToOne
-    @MapsId
-    private Employee11 employee11;
+    @ManyToMany(mappedBy = "addresss")
+    private List<Employee13> employee13s = new ArrayList<Employee13>();
 
-    public Address2() {
+    public Address4() {
+    }
+
+    public Address4(String steet, String zipcode) {
+        this.steet = steet;
+        this.zipcode = zipcode;
     }
 
     public String getSteet() {
@@ -33,11 +39,11 @@ public class Address2 {
         this.zipcode = zipcode;
     }
 
-    public Employee11 getEmployee11() {
-        return employee11;
+    public List<Employee13> getEmployee13s() {
+        return employee13s;
     }
 
-    public void setEmployee11(Employee11 employee11) {
-        this.employee11 = employee11;
+    public void setEmployee13s(List<Employee13> employee13s) {
+        this.employee13s = employee13s;
     }
 }
